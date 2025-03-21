@@ -18,8 +18,11 @@ package net.micode.notes.data;
 
 import android.net.Uri;
 public class Notes {
+    //这里是定义了基本的信息，即认证信息和日志输出时的标志，方便我们了解日志信息是由谁发出的。
     public static final String AUTHORITY = "micode_notes";
     public static final String TAG = "Notes";
+
+    //这边定义了note表中，类型行的3种取值：
     public static final int TYPE_NOTE     = 0;
     public static final int TYPE_FOLDER   = 1;
     public static final int TYPE_SYSTEM   = 2;
@@ -30,11 +33,19 @@ public class Notes {
      * {@link Notes#ID_TEMPARAY_FOLDER } is for notes belonging no folder
      * {@link Notes#ID_CALL_RECORD_FOLDER} is to store call records
      */
+
+    //这里定义了4种文件夹类型：
+    //
+    //ID_ROOT_FOLDER：默认文件夹
+    //ID_TEMPARAY_FOLDER：不属于文件夹的笔记
+    //ID_CALL_RECORD_FOLDER：用于存储通话记录，以便返回
+    //ID_TRASH_FOLER：垃圾回收站
     public static final int ID_ROOT_FOLDER = 0;
     public static final int ID_TEMPARAY_FOLDER = -1;
     public static final int ID_CALL_RECORD_FOLDER = -2;
     public static final int ID_TRASH_FOLER = -3;
 
+    //就是定义一些布局的ID，这部分就是用于设置UI界面的一些布局或小组件的id。
     public static final String INTENT_EXTRA_ALERT_DATE = "net.micode.notes.alert_date";
     public static final String INTENT_EXTRA_BACKGROUND_ID = "net.micode.notes.background_color_id";
     public static final String INTENT_EXTRA_WIDGET_ID = "net.micode.notes.widget_id";
@@ -46,6 +57,7 @@ public class Notes {
     public static final int TYPE_WIDGET_2X            = 0;
     public static final int TYPE_WIDGET_4X            = 1;
 
+    //这里定义了两种数据类型：文本便签和通话记录
     public static class DataConstants {
         public static final String NOTE = TextNote.CONTENT_ITEM_TYPE;
         public static final String CALL_NOTE = CallNote.CONTENT_ITEM_TYPE;
@@ -54,6 +66,7 @@ public class Notes {
     /**
      * Uri to query all notes and folders
      */
+    //Android开发中常见的用于定义内容提供者（Content Provider）URI，内容提供者是一种Android组件，它允许应用程序共享和存储数据。这里定义了一个URI来查询数据
     public static final Uri CONTENT_NOTE_URI = Uri.parse("content://" + AUTHORITY + "/note");
 
     /**
@@ -61,6 +74,10 @@ public class Notes {
      */
     public static final Uri CONTENT_DATA_URI = Uri.parse("content://" + AUTHORITY + "/data");
 
+
+    //这个接口定义了一系列静态的、最终的字符串常量，这些常量代表数据库表中的列名。
+    //
+    //里面定义的属性有：ID、父级ID、创建日期、修改日期、提醒日期、文件（标签）名（摘要？）、小部件ID、小部件类型、背景颜色ID、附件、文件中的标签数量、 文件（标签）类型、最后一个同步ID、本地修改标签、移动前的ID、谷歌任务ID、代码版本信息。
     public interface NoteColumns {
         /**
          * The unique ID for a row
